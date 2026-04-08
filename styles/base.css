@@ -3,6 +3,14 @@
    Truthpaste | Phase 1
    ============================================================================= */
 
+@font-face {
+  font-family: 'WonderType';
+  src: url('../assets/fonts/WonderType-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 /* -----------------------------------------------------------------------------
    Custom Properties
@@ -16,7 +24,7 @@
   
     /* Typography */
     --font-display:    Georgia, 'Times New Roman', 'Times', serif;
-    --font-nav:        Georgia, 'Times New Roman', 'Times', serif;
+    --font-nav:        'WonderType', Georgia, 'Times New Roman', 'Times', serif;
   
     /* Spacing scale (rem-based, 4pt grid) */
     --space-1:  0.25rem;   /*  4px */
@@ -41,7 +49,7 @@
     --duration-slow:   350ms;
   
     /* Nav label */
-    --nav-font-size:   clamp(0.8rem, 1.3vw, 1.05rem);
+    --nav-font-size:   clamp(1.45rem, 1.8vw, 1.45rem);
     --nav-letter-spacing: 0.03em;
   }
   
