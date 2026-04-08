@@ -32,10 +32,11 @@
      Header — logo, top-left
      ----------------------------------------------------------------------------- */
   .site-header {
-    /* Keeps logo left-anchored; flex gives room for future additions (e.g. social icons) */
+    /* Logo left, jester right — matching the tour page balance */
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: var(--header-align-items);
+    justify-content: var(--header-justify-content);
+    gap: var(--header-gap);
   
     padding-bottom: var(--space-2);
   }
@@ -46,15 +47,16 @@
   }
   
   .logo-jester {
-    position: absolute; right: var(--space-4); top: var(--space-4);
-    width: clamp(55px, 8vw, 100px);
+    width: var(--logo-jester-width);
     height: auto;
     user-select: none;
     -webkit-user-drag: none;
+    flex-shrink: 0;
   }
 
   .logo {
     width: var(--logo-width);
+    margin-top: var(--logo-offset-y);
     height: auto;
   
     /*

@@ -36,8 +36,13 @@
     --space-12: 3rem;      /* 48px */
     --space-16: 4rem;      /* 64px */
   
-    /* Logo */
-    --logo-width: clamp(240px, 30vw, 460px);
+    /* Header + logos (shared across pages) */
+    --logo-width: clamp(180px, 30vw, 300px);
+    --logo-jester-width: clamp(50px, 8vw, 80px);
+    --logo-offset-y: 15px;
+    --header-align-items: flex-start;
+    --header-justify-content: space-between;
+    --header-gap: var(--space-4);
   
     /* Character figures */
     --character-height: clamp(300px, 62vh, 680px);
