@@ -14,8 +14,8 @@
     grid-template-rows: auto 1fr;   /* header shrinks to content; main takes rest */
     min-height: 100dvh;
   
-    /* Inset frame: creates the bordered-page feel from the reference */
-    margin: var(--space-4);
+    /* Full-bleed frame: border sits on viewport edges */
+    margin: 0;
     border: 1px solid var(--color-border);
   
     /* Breathing room inside the frame */
@@ -45,6 +45,14 @@
     /* Future: add class .js-cursor-trigger for custom pointer on hover */
   }
   
+  .logo-jester {
+    position: absolute; right: var(--space-4); top: var(--space-4);
+    width: clamp(55px, 8vw, 100px);
+    height: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
   .logo {
     width: var(--logo-width);
     height: auto;
@@ -82,7 +90,7 @@
   
   @media (max-width: 700px) {
     .site-wrapper {
-      margin: var(--space-2);
+      margin: 0;
       padding: var(--space-6) var(--space-4) 0;
     }
   }
