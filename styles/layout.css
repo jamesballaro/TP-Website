@@ -1,0 +1,88 @@
+/* =============================================================================
+   layout.css — Page Grid, Header, Main Region
+   Truthpaste | Phase 1
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   Outer frame
+   The template shows a thin, warm border enclosing the layout.
+   This is the only "decoration" at the layout level; everything else is space.
+   ----------------------------------------------------------------------------- */
+   .site-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;   /* header shrinks to content; main takes rest */
+    min-height: 100dvh;
+  
+    /* Inset frame: creates the bordered-page feel from the reference */
+    margin: var(--space-4);
+    border: 1px solid var(--color-border);
+  
+    /* Breathing room inside the frame */
+    padding: var(--space-6) var(--space-8) 0;
+  
+    /*
+     * Future: for full-bleed cursor/background effects, move this wrapper
+     * inside a parent that fills 100vw/100vh without the margin.
+     */
+  }
+  
+  
+  /* -----------------------------------------------------------------------------
+     Header — logo, top-left
+     ----------------------------------------------------------------------------- */
+  .site-header {
+    /* Keeps logo left-anchored; flex gives room for future additions (e.g. social icons) */
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  
+    padding-bottom: var(--space-2);
+  }
+  
+  .logo-link {
+    display: inline-block;
+    /* Future: add class .js-cursor-trigger for custom pointer on hover */
+  }
+  
+  .logo {
+    width: var(--logo-width);
+    height: auto;
+  
+    /*
+     * The supplied logo asset is white lettering on a black ground.
+     * invert(1) converts it to black lettering on white — matching the reference.
+     * When a transparent/dark variant is available, remove this filter entirely
+     * and update the <img> src to point to that asset.
+     */  
+    /* Prevent the logo from dragging (cosmetic but polished) */
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  
+  
+  /* -----------------------------------------------------------------------------
+     Main — character navigation region
+     ----------------------------------------------------------------------------- */
+  .site-main {
+    /*
+     * Aligns the band-nav to the bottom of the available space,
+     * which pulls character feet to the page baseline — matching the template.
+     */
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  
+  /* =============================================================================
+     Responsive adjustments
+     The site is primarily a desktop landing page in Phase 1.
+     Mobile breakpoints are minimal — structure holds; characters stack.
+     ============================================================================= */
+  
+  @media (max-width: 700px) {
+    .site-wrapper {
+      margin: var(--space-2);
+      padding: var(--space-6) var(--space-4) 0;
+    }
+  }

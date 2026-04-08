@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Truthpaste — official website. Listen, tour, merch, watch, mailing list.">
+  <title>Truthpaste</title>
+
+  <!-- Stylesheet load order: base → layout → components -->
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/characters.css">
+</head>
+<body>
+
+  <!--
+    .site-wrapper: outermost container.
+    Provides the framed grid structure (header + main).
+    Future: add class js-site-loaded via JS for entry animations.
+  -->
+  <div class="site-wrapper">
+
+    <header class="site-header" role="banner">
+      <!--
+        Logo links to root. 
+        Future cursor hook: add class js-cursor-logo for custom pointer behaviour.
+      -->
+      <a href="" class="logo-link" aria-label="Truthpaste — Home">
+        <img
+          src="assets/images/logo.png"
+          alt="Truthpaste"
+          class="logo"
+          width="480"
+          height="auto"
+          fetchpriority="high"
+        >
+      </a>
+    </header>
+
+    <main class="site-main" role="main">
+
+      <!--
+        Band navigation: each member is a full-bleed link (character + label).
+        data-member: unique identifier for JS targeting (hover effects, animations).
+        Order (L→R) mirrors the reference template: james, theo, claire, euan, fifth.
+      -->
+      <nav class="band-nav" aria-label="Site navigation">
+
+        <a href="https://truthpaste.ffm.to/idontknoweither" class="band-member" data-member="james" aria-label="Listen to Truthpaste">
+          <figure class="character-figure" aria-hidden="true">
+            <img
+              src="assets/images/james.jpeg"
+              alt=""
+              class="character-img"
+              loading="eager"
+              draggable="false"
+            >
+          </figure>
+          <span class="nav-label">listen</span>
+        </a>
+
+        <a href="#tour" class="band-member" data-member="theo" aria-label="Tour dates">
+          <figure class="character-figure" aria-hidden="true">
+            <img
+              src="assets/images/theo.jpeg"
+              alt=""
+              class="character-img"
+              loading="eager"
+              draggable="false"
+            >
+          </figure>
+          <span class="nav-label">tour</span>
+        </a>
+
+        <a href="https://memorialsofdistinction.bandcamp.com/album/truthpaste-i-don-t-know-either-ep" class="band-member" data-member="claire" aria-label="Merchandise">
+          <figure class="character-figure" aria-hidden="true">
+            <img
+              src="assets/images/claire.jpeg"
+              alt=""
+              class="character-img"
+              loading="eager"
+              draggable="false"
+            >
+          </figure>
+          <span class="nav-label">merch</span>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=t2QnqLN2-BY" class="band-member" data-member="euan" aria-label="Watch Truthpaste videos">
+          <figure class="character-figure" aria-hidden="true">
+            <img
+              src="assets/images/euan.jpeg"
+              alt=""
+              class="character-img"
+              loading="eager"
+              draggable="false"
+            >
+          </figure>
+          <span class="nav-label">watch</span>
+        </a>
+
+        <a href="https://truthpaste-mailing-list.beehiiv.com/subscribe" class="band-member" data-member="fifth" aria-label="Join the mailing list">
+          <figure class="character-figure" aria-hidden="true">
+            <img
+              src="assets/images/esme.jpeg"
+              alt=""
+              class="character-img"
+              loading="eager"
+              draggable="false"
+            >
+          </figure>
+          <span class="nav-label">mailing list</span>
+        </a>
+
+      </nav>
+
+    </main>
+  </div>
+
+  <!-- Deferred: only runs after parse, keeps initial render unblocked -->
+  <script src="scripts/main.js" defer></script>
+
+</body>
+</html>

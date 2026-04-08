@@ -1,0 +1,122 @@
+/* =============================================================================
+   base.css — Reset, Custom Properties, Typography
+   Truthpaste | Phase 1
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   Custom Properties
+   All design tokens live here. Edit here first.
+   ----------------------------------------------------------------------------- */
+   :root {
+    /* Colour */
+    --color-bg:        #ffffff;
+    --color-text:      #111111;
+    --color-border:    #d8d4cc;       /* subtle warm-grey frame */
+  
+    /* Typography */
+    --font-display:    Georgia, 'Times New Roman', 'Times', serif;
+    --font-nav:        Georgia, 'Times New Roman', 'Times', serif;
+  
+    /* Spacing scale (rem-based, 4pt grid) */
+    --space-1:  0.25rem;   /*  4px */
+    --space-2:  0.5rem;    /*  8px */
+    --space-3:  0.75rem;   /* 12px */
+    --space-4:  1rem;      /* 16px */
+    --space-6:  1.5rem;    /* 24px */
+    --space-8:  2rem;      /* 32px */
+    --space-12: 3rem;      /* 48px */
+    --space-16: 4rem;      /* 64px */
+  
+    /* Logo */
+    --logo-width: clamp(240px, 30vw, 460px);
+  
+    /* Character figures */
+    --character-height: clamp(300px, 62vh, 680px);
+  
+    /* Transitions */
+    --ease-standard:   cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-fast:   120ms;
+    --duration-base:   200ms;
+    --duration-slow:   350ms;
+  
+    /* Nav label */
+    --nav-font-size:   clamp(0.8rem, 1.3vw, 1.05rem);
+    --nav-letter-spacing: 0.03em;
+  }
+  
+  
+  /* -----------------------------------------------------------------------------
+     Reset
+     Minimal, surgical — no full reset library needed.
+     ----------------------------------------------------------------------------- */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 16px;
+    /* Prepare for smooth future scroll behaviour */
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-display);
+    line-height: 1.5;
+    cursor: url('../assets/images/jester-cursor.png') 8 8, auto;
+    min-height: 100dvh;            /* dvh: respects mobile chrome */
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Images never overflow their containers */
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Strip default link styles; restore explicitly where needed */
+  a {
+    color: inherit;
+    text-decoration: none;
+    cursor: url('../assets/images/jester-cursor.png') 8 8, pointer;
+  }
+  
+  /* No bullet-list styles needed at site level */
+  ul, ol {
+    list-style: none;
+  }
+  
+  /* figure has implicit margin in some browsers */
+  figure {
+    margin: 0;
+  }
+  
+  
+  /* -----------------------------------------------------------------------------
+     Focus styles
+     Keyboard accessibility — do not remove.
+     ----------------------------------------------------------------------------- */
+  :focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /*
+   * Touch devices ignore cursor UI, so skip custom cursor there.
+   * Keeps desktop custom pointer while avoiding useless image loads on coarse pointers.
+   */
+  @media (pointer: coarse) {
+    body,
+    a {
+      cursor: auto;
+    }
+  }

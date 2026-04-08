@@ -1,0 +1,173 @@
+/* =============================================================================
+   characters.css — Band Member Figures, Navigation Labels, Hover States
+   Truthpaste | Phase 1
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   Band navigation row
+   Flex container: characters bottom-aligned so feet sit on the same baseline.
+   ----------------------------------------------------------------------------- */
+   .band-nav {
+    display: flex;
+    align-items: flex-end;             /* feet on a shared baseline */
+    justify-content: space-between;    /* stable spacing across resize */
+    width: 100%;
+    gap: clamp(var(--space-2), 1.5vw, var(--space-6));
+  }
+  
+  
+  /* -----------------------------------------------------------------------------
+     Band member link
+     Each link wraps a character figure + nav label.
+     This is the primary interactive affordance on the page.
+     ----------------------------------------------------------------------------- */
+  .band-member {
+    /* Stack: character above, label below */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  
+    /* Remove default link underline; we manage it ourselves */
+    text-decoration: none;
+  
+    /*
+     * data-member attribute (james | theo | claire | euan | fifth)
+     * is available on each anchor for targeted JS behaviour.
+     * Future: .js-cursor-character class added here for member-specific cursors.
+     */
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  
+  
+  /* -----------------------------------------------------------------------------
+     Character figure
+     Wraps the illustration; bottom-aligns within the flex context.
+     ----------------------------------------------------------------------------- */
+  .character-figure {
+    display: flex;
+    align-items: flex-end;    /* ensures image sits at its own bottom edge */
+    justify-content: center;
+    width: 100%;
+    flex-shrink: 1;
+  }
+  
+  .character-img {
+    height: auto;
+    width: min(100%, 320px);
+    max-height: var(--character-height);
+    object-fit: contain;
+  
+    /* Prevent browser selection on click-drag */
+    user-select: none;
+    -webkit-user-drag: none;
+  
+    /* --- Hover transition ---------------------------------------------------- */
+    /*
+     * Opacity shift: subtle enough not to distract, clear enough to confirm target.
+     * Phase 2: swap opacity for a transform (translateY, scale) here.
+     * Phase 2: add will-change: transform when animations land.
+     */
+    transition:
+      opacity var(--duration-base) var(--ease-standard);
+  }
+  
+  .band-member:hover .character-img,
+  .band-member:focus-visible .character-img {
+    opacity: 0.82;
+  }
+  
+  
+  /* -----------------------------------------------------------------------------
+     Navigation label
+     Sits below the character. Clean, lightweight, lowercase serif.
+     ----------------------------------------------------------------------------- */
+  .nav-label {
+    font-family: var(--font-nav);
+    font-size: var(--nav-font-size);
+    font-weight: 400;
+    letter-spacing: var(--nav-letter-spacing);
+    color: var(--color-text);
+  
+    /* Padding-bottom makes room for the pseudo-underline without layout shift */
+    padding-bottom: var(--space-1);
+  
+    /* Prevent long labels like "mailing list" from wrapping on narrow columns */
+    white-space: nowrap;
+  
+    /*
+     * Animated underline via ::after pseudo-element.
+     * Grows left-to-right on hover.
+     * Future: direction, colour, thickness can be member-specific via data-member selectors.
+     */
+    position: relative;
+  }
+  
+  .nav-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  
+    /* Width: 0 → 100% on hover */
+    width: 0;
+    height: 1px;
+    background-color: var(--color-text);
+  
+    transition:
+      width var(--duration-slow) var(--ease-standard);
+  }
+  
+  .band-member:hover .nav-label::after,
+  .band-member:focus-visible .nav-label::after {
+    width: 100%;
+  }
+  
+  
+  /* -----------------------------------------------------------------------------
+     Bottom padding
+     Gives the nav-label breathing space from the frame border.
+     Applied on the nav itself so it inherits the site-main's flex context cleanly.
+     ----------------------------------------------------------------------------- */
+  .band-nav {
+    padding-bottom: var(--space-8);
+  }
+  
+  
+  /* =============================================================================
+     Responsive
+     On small screens, allow horizontal scroll on the character row.
+     A proper stacked layout is a Phase 2 concern.
+     ============================================================================= */
+  
+  @media (max-width: 1024px) {
+    .band-nav {
+      justify-content: center;
+      flex-wrap: wrap;
+      row-gap: var(--space-8);
+    }
+
+    .band-member {
+      flex: 1 1 calc(33.333% - var(--space-6));
+      max-width: 280px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .band-nav {
+      justify-content: center;
+      gap: var(--space-4);
+      padding-bottom: var(--space-6);
+    }
+
+    .band-member {
+      flex: 1 1 calc(50% - var(--space-4));
+      max-width: 240px;
+    }
+ 
+    :root {
+      --character-height: clamp(180px, 42vh, 320px);
+    }
+  }
