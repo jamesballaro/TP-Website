@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Truthpaste tour dates and ticket links.">
+  <title>Truthpaste — Tour</title>
+
+  <link rel="stylesheet" href="../styles/base.css">
+  <style>
+    .tour-page {
+      min-height: 100dvh;
+      border: 1px solid var(--color-border);
+      padding: var(--space-6) var(--space-8);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: var(--space-6);
+    }
+
+    .tour-header {
+      display: flex;
+      align-items: var(--header-align-items);
+      justify-content: var(--header-justify-content);
+      gap: var(--header-gap);
+      flex-wrap: wrap;
+    }
+
+    .tour-logo {
+      width: var(--logo-width);
+      margin-top: var(--logo-offset-y);
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .tour-jester {
+      width: var(--logo-jester-width);
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .tour-home-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .tour-back-link {
+      font-family: var(--font-nav);
+      font-size: var(--nav-font-size);
+      letter-spacing: var(--nav-letter-spacing);
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .tour-widget-wrap {
+      width: min(100%, 1300px);
+      justify-self: center;
+      margin-top: var(--space-6);
+      font-family: var(--font-nav);
+    }
+
+    .widget-font-probe {
+      font-family: var(--font-nav);
+      font-size: 1px;
+      line-height: 1;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @media (max-width: 1300px) {
+      .tour-page {
+        padding: var(--space-6) var(--space-4);
+      }
+
+      .tour-widget-wrap {
+        margin-top: var(--space-6);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tour-page">
+    <header class="tour-header">
+      <a href="../index.html" aria-label="Truthpaste home">
+        <img
+          src="../assets/images/logo.png"
+          alt="Truthpaste"
+          class="tour-logo"
+          width="480"
+          height="auto"
+          fetchpriority="high"
+        >
+      </a>
+      <div class="tour-home-stack">
+        <img
+          src="../assets/images/jester.png"
+          alt=""
+          class="tour-jester"
+          width="84"
+          height="84"
+          loading="eager"
+          draggable="false"
+        >
+        <a href="../index.html" class="tour-back-link" aria-label="Back to home">home</a>
+      </div>
+    </header>
+
+    <main class="tour-widget-wrap" aria-label="Songkick tour dates">
+      <span class="widget-font-probe" aria-hidden="true">WonderType</span>
+      <a
+        href="https://www.songkick.com/artists/10389020"
+        class="songkick-widget"
+        data-theme="light"
+        data-track-button="on"
+        data-detect-style="off"
+        data-background-color="rgb(255,255,255,1)"
+        data-font-color="rgb(0,0,0,1)"
+        data-button-bg-color="rgb(0,0,0,1)"
+        data-button-text-color="rgb(255,255,255,1)"
+        data-locale="en"
+        data-other-artists="on"
+        data-share-button="on"
+        data-country-filter="on"
+        data-rsvp="on"
+        data-request-show="on"
+        data-past-events="off"
+        data-past-events-offtour="off"
+        data-remind-me="off"
+        style="display: none;"
+      ></a>
+
+    </main>
+  </div>
+
+  <script src="https://widget-app.songkick.com/injector/10389020"></script>
+</body>
+</html>
