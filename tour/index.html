@@ -13,19 +13,20 @@
       min-height: 100dvh;
       border: 1px solid var(--color-border);
       padding: var(--space-6) var(--space-8);
-      display: grid;
-      grid-template-rows: auto 1fr;
-      gap: var(--space-6);
       position: relative;
-      overflow: hidden;
     }
 
     .tour-header {
+      position: fixed;
+      top: var(--space-6);
+      left: var(--space-8);
+      right: var(--space-8);
       display: flex;
       align-items: var(--header-align-items);
       justify-content: var(--header-justify-content);
       gap: var(--header-gap);
       flex-wrap: wrap;
+      z-index: 10;
     }
 
     .tour-logo {
@@ -34,6 +35,21 @@
       height: auto;
       user-select: none;
       -webkit-user-drag: none;
+
+      /*
+       * Layered drop-shadow blur — follows the PNG alpha channel contours,
+       * not the bounding box. Each layer adds radius: tight inner glow,
+       * mid halo, soft outer bloom. Opacity is tuned so the effect reads
+       * as atmospheric rather than heavy.
+       *
+       * drop-shadow(offset-x offset-y blur-radius color)
+       * All offsets are 0 so the glow spreads uniformly around each letterform.
+       */
+      filter:
+        drop-shadow(0 0 3px  rgba(255, 255, 255, 0.95))   /* tight letter-edge glow  */
+        drop-shadow(0 0 14px  rgba(255, 255, 255, 0.70))   /* mid halo                */
+        drop-shadow(0 0 35px rgba(255, 255, 255, 0.45))   /* soft bloom              */
+        drop-shadow(0 0 60px rgba(255, 255, 255, 0.20));  /* distant atmospheric fade */
     }
 
     .tour-jester {
@@ -60,34 +76,10 @@
 
     .tour-widget-wrap {
       width: min(100%, 1300px);
-      justify-self: center;
-      margin-top: var(--space-6);
+      margin: calc(var(--space-6) + 120px) auto 0;
       font-family: var(--font-nav);
       position: relative;
       z-index: 2;
-    }
-
-    .tour-background {
-      position: fixed;
-      left: var(--space-8);
-      right: var(--space-8);
-      bottom: calc(var(--space-6) + var(--space-3) + var(--nav-font-size) + var(--space-2) + 17px);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: clamp(var(--space-2), 1.5vw, var(--space-6));
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.44;
-      filter: blur(3px);
-    }
-
-    .tour-bg-character {
-      width: min(20vw, 320px);
-      max-height: var(--character-height);
-      object-fit: contain;
-      user-select: none;
-      -webkit-user-drag: none;
     }
 
     .widget-font-probe {
@@ -104,18 +96,13 @@
         padding: var(--space-6) var(--space-4);
       }
 
-      .tour-widget-wrap {
-        margin-top: var(--space-6);
-      }
-
-      .tour-background {
+      .tour-header {
         left: var(--space-4);
         right: var(--space-4);
-        bottom: calc(var(--space-6) + var(--space-3) + var(--nav-font-size) + var(--space-1));
       }
 
-      .tour-bg-character {
-        width: min(24vw, 320px);
+      .tour-widget-wrap {
+        margin-top: calc(var(--space-6) + 110px);
       }
     }
   </style>
@@ -146,14 +133,6 @@
         <a href="../index.html" class="tour-back-link" aria-label="Back to home">home</a>
       </div>
     </header>
-
-    <div class="tour-background" aria-hidden="true">
-      <img src="../assets/images/james.png" alt="" class="tour-bg-character" loading="eager" draggable="false">
-      <img src="../assets/images/theo.png" alt="" class="tour-bg-character" loading="eager" draggable="false">
-      <img src="../assets/images/claire.png" alt="" class="tour-bg-character" loading="eager" draggable="false">
-      <img src="../assets/images/euan.png" alt="" class="tour-bg-character" loading="eager" draggable="false">
-      <img src="../assets/images/esme.png" alt="" class="tour-bg-character" loading="eager" draggable="false">
-    </div>
 
     <main class="tour-widget-wrap" aria-label="Songkick tour dates">
       <span class="widget-font-probe" aria-hidden="true">WonderType</span>
