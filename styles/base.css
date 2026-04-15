@@ -111,6 +111,40 @@
   figure {
     margin: 0;
   }
+
+  .social-links {
+    position: fixed;
+    right: var(--space-4);
+    top: 80%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    z-index: 30;
+  }
+
+  .social-link {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--duration-base) var(--ease-standard);
+  }
+
+  .social-link:hover,
+  .social-link:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  .social-link i {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
   
   
   /* -----------------------------------------------------------------------------
@@ -131,5 +165,21 @@
     body,
     a {
       cursor: auto;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .social-links {
+      right: var(--space-2);
+      gap: var(--space-2);
+    }
+
+    .social-link {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+
+    .social-link i {
+      font-size: 1.2rem;
     }
   }
