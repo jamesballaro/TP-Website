@@ -116,6 +116,8 @@
   
   @media (max-width: 700px) {
     .site-wrapper {
+      position: relative;
+      z-index: 1;
       margin: 0;
       padding: var(--space-6) var(--space-4) 0;
     }

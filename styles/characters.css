@@ -53,7 +53,6 @@
     width: 100%;
     flex-shrink: 1;
   }
-  
   .character-img {
     height: auto;
     width: min(100%, 320px);
@@ -70,13 +69,17 @@
      * Phase 2: swap opacity for a transform (translateY, scale) here.
      * Phase 2: add will-change: transform when animations land.
      */
+    /* with: */
     transition:
-      opacity var(--duration-base) var(--ease-standard);
+      opacity  var(--duration-base) var(--ease-standard),
+      transform var(--duration-slow) var(--ease-standard);   /* smooth snap-back on mouse-leave */
+    will-change: transform;
   }
   
   .band-member:hover .character-img,
   .band-member:focus-visible .character-img {
-    opacity: 0.82;
+    opacity: 0.88;
+    animation: character-float 1.8s ease-in-out infinite;
   }
   
   
@@ -135,7 +138,15 @@
     padding-bottom: var(--space-8);
   }
   
-  
+  /* -----------------------------------------------------------------------------
+   Character hover animation
+   Gentle float with a slight lean — sine-wave feel via ease-in-out.
+   ----------------------------------------------------------------------------- */
+  @keyframes character-float {
+    0%, 100% { transform: translateY(0)     rotate(0deg);  }
+    30%       { transform: translateY(-9px)  rotate(-0.6deg); }
+    70%       { transform: translateY(-9px)  rotate(0.6deg);  }
+  }
   /* =============================================================================
      Responsive
      On small screens, allow horizontal scroll on the character row.
